@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appoly</title>
+  <!-- название компании -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <a class="skip-link" href="#main">
+      go to content
+    </a>
+    <div class="header__wrapper">
+
+      <button class="header__burger burger">
+        <!-- <img class="burger__img" src="#" alt="бургер меню"> -->
+        <span></span>
+      </button>
+      <nav class="header__nav nav">
+        <a href="#" class="nav__item">
+          Home
+        </a>
+        <a href="#about" class="nav__item">
+          About
+        </a>
+        <a href="#features" class="nav__item">
+          Features
+        </a>
+      </nav>
+      <a href="#" class="header__logo logo">
+        <img class="logo__img" src="img/logo.jpg" alt="логотип компании">
+      </a>
+      <nav class="header__nav nav">
+        <a href="#how-to-use" class="nav__item">
+          Screenshot
+        </a>
+        <a href="#blog" class="nav__item">
+          Blog
+        </a>
+        <a href="#app" class="nav__item nav__item_background">DOWNLOAD</a>
+      </nav>
+      <a href="#" class="header__download">DOWNLOAD</a>
+      <div class="header__box box">
+        <a href="mailto:info@youremail.com" class="box__link">
+          <img src="img/mail-fill.svg" alt="письмо" class="box__img">
+          <span class="box__text">info@youremail.com</span>
+        </a>
+        <a href="tel:4805550103" class="box__link">
+          <img src="img/phone-fill.svg" alt="телефон" class="box__img">
+          <span class="box__text">(480) 555-0103</span>
+        </a>
+        <ul class="social__list">
+          <li class="social__item social__item_border-none">
+            <a href="#" class="social__link">
+              <img src="img/social__facebook.svg" alt="facebook">
+            </a>
+          </li>
+          <li class="social__item  social__item_border-none">
+            <a href="#" class="social__link">
+              <img src="img/social__instagram.svg" alt="instagram">
+            </a>
+          </li>
+          <li class="social__item  social__item_border-none">
+            <a href="#" class="social__link">
+              <img src="img/social__twitter.svg" alt="twitter">
+            </a>
+          </li>
+          <li class="social__item  social__item_border-none">
+            <a href="#" class="social__link">
+              <img src="img/social__youtube.svg" alt="youtube">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main class="main" id="main">
+    <h1 class="visually-hidden">Applly - app that makes your life better</h1>
+    <section class="main__info info">
+      <div class="info__wrapper">
+        <div class="info__box">
+          <div class="info__container">
+            <h2 class="info__title title">
+              A Great App Makes Your Life Better
+            </h2>
+            <p class="info__text text">
+              Amet minim mollit
+              non deserunt ullamco
+              est sit aliqua dolor do
+              amet sint. Velit
+              officia consequat duis
+              enim
+              velit
+              mollit.
+            </p>
+            <h3 class="info__subtitle">
+              Download App Now
+            </h3>
+            <div class="info__download download">
+              <a href="" class="download__link">
+                <img src="img/google__play.jpg" alt="кнопка для скачивания с Google Play">
+                <span class="visually-hidden">Download our app from Google Play</span>
+              </a>
+              <a href="" class="download__link">
+                <img src="img/app_store.jpg" alt="кнопка для скачикая с App store">
+                <span class="visually-hidden">Download our app from App Store</span>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+        <img src="img/info__mobile.png" class="info__example" alt="прототип внешнего вида приложения">
+      </div>
+    </section>
+    <section class="main__about about" id="about">
+      <div class="about__wrapper">
+        <h2 class="about__title">
+          About Our App
+        </h2>
+        <p class="about__text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae.
+        </p>
+        <div class="about__content-wrapper">
+          <img src="img/about__img.png" class="about__img" alt="картинка одной из страниц приложения">
+          <ul class="about__advantages advantages">
+            <li class="advantages__item">
+              <h3 class="advantages__title">Creative design</h3>
+              <p class="advantages__text">
+                Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.
+              </p>
+              <img src="img/checkbox-circle-fill.svg" alt="галочка" class="advantages__img">
+            </li>
+            <li class="advantages__item">
+              <h3 class="advantages__title">easy to use</h3>
+              <p class="advantages__text">
+                Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.
+              </p>
+              <img src="img/checkbox-circle-fill.svg" alt="галочка" class="advantages__img">
+            </li>
+            <li class="advantages__item">
+              <h3 class="advantages__title">easy to use</h3>
+              <p class="advantages__text">
+                Lorem ipsum dolor sit amet, conse ctetur adipiscing elit.
+              </p>
+              <img src="img/checkbox-circle-fill.svg" alt="галочка" class="advantages__img">
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </section>
+    <section class="main__features features" id="features">
+      <div class="features__wrapper">
+        <h2 class="features__title features__title--big">
+          App features
+        </h2>
+        <p class="features__text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae.
+        </p>
+        <ul class="features__list">
+          <li class="features__item">
+
+            <img src="img/comment.svg" class="features__img" alt="картинка сообщения">
+
+            <h3 class="features__title">
+              Full free chat
+            </h3>
+            <p class="features__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae.
+            </p>
+          </li>
+
+          <li class="features__item">
+
+            <img class="features__img" src="img/browser.svg" alt="картинка сообщения">
+
+            <h3 class="features__title">
+              unlimiter features
+            </h3>
+            <p class="features__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </li>
+
+          <li class="features__item">
+
+            <img class="features__img" src="img/vector.svg" alt="картинка сообщения">
+
+            <h3 class="features__title">
+              awsome ui design
+            </h3>
+            <p class="features__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+            <img class="features__img features__img--big" src="img/features__img.jpg"
+              alt="страницы аналитики открытая с телефона">
+          </li>
+
+          <li class="features__item">
+
+            <img class="features__img" src="img/cell-phone.svg" alt="картинка сообщения">
+
+            <h3 class="features__title">
+              iso & androind version
+            </h3>
+            <p class="features__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </li>
+
+          <li class="features__item">
+
+            <img class="features__img" src="img/eye-scanner_1.svg" alt="картинка сообщения">
+
+            <h3 class="features__title">
+              retina ready greaphics
+            </h3>
+            <p class="features__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </li>
+
+          <li class="features__item">
+
+            <img class="features__img" src="img/male-telemarketer.svg" alt="картинка сообщения">
+
+            <h3 class="features__title">
+              24/7 support by real pepole
+            </h3>
+            <p class="features__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+    <section class="main__app app" id="app">
+
+      <div class="app__wrapper">
+        <div class="app__box">
+          <h2 class="visually-hidden">About our app</h2>
+          <p class="app__title">
+            Download App Now
+          </p>
+          <p class="app__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae,
+            nullam
+            lobortis enim.
+          </p>
+          <div class="app__download download">
+            <a href="" class="download__link">
+              <img src="img/google__play--big.jpg" alt="кнопка для скачивания с Google Play">
+              <span class="visually-hidden">Download our app from Google Play</span>
+            </a>
+            <a href="" class="download__link">
+              <img src="img/app__store--big.png" alt="кнопка для скачикая с App store">
+              <span class="visually-hidden">Download our app from App Store</span>
+            </a>
+
+          </div>
+
+          <ul class="app__list">
+            <li class="app__item">
+              <img class="app__img" src="img/comment.svg" alt="значок скачивания">
+              <p class="app__number">
+                59865
+              </p>
+              <h3 class="app__info">
+                Download
+              </h3>
+            </li>
+
+            <li class="app__item">
+              <img class="app__img" src="img/like.svg" alt="значок лайка">
+              <p class="app__number">
+                29852
+              </p>
+              <h3 class="app__info">
+                Like
+              </h3>
+            </li>
+
+            <li class="app__item">
+              <img class="app__img" src="img/star.svg" alt="звёздочка">
+              <p class="app__number">
+                1500
+              </p>
+              <h3 class="app__info">
+                5 star rating
+              </h3>
+            </li>
+          </ul>
+        </div>
+
+        <img class="app__img app__img--big" src="img/app__img--big.png" alt="дизайн старницы по аналитике">
+
+      </div>
+
+    </section>
+    <section class="main__how-to-use how-to-use" id="how-to-use">
+      <div class="how-to-use__wrapper">
+        <h2 class="how-to-use__title title">
+          how to use the app perfectly
+        </h2>
+        <p class="how-to-use__text text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae.
+        </p>
+        <!-- <how-to-use class="how-to-use__content" src="#"></how-to-use> -->
+        <img class="how-to-use__video" src="img/how-to-use.jpg" alt="">
+      </div>
+    </section>
+    <section class="main__rewiev rewiev" id="rewiev">
+      <div class="rewiev__wrapper">
+        <h2 class="rewiev__title">
+          Our Happy Cutomar
+        </h2>
+        <p class="rewiev__text">
+          Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit.
+          Viverra nunc ante velit vitae.
+        </p>
+        <div class="slider">
+          <div class="slider__box">
+            <div class="slider__item">
+              <img class="slider__img" src="img/slider__img.jpg" alt="аватарка">
+              <h3 class="slider__name">
+                Ann Lubin
+              </h3>
+              <p class="slider__profession">
+                CO-FUNDER
+              </p>
+              <p class="slider__text text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus
+                vitae, nullam
+                lobortis enim.
+              </p>
+            </div>
+
+            <div class="slider__item slider__item_active">
+              <img class="slider__img" src="img/slider__img.jpg" alt="аватарка">
+              <h3 class="slider__name">
+                Ann Lubin
+              </h3>
+              <p class="slider__profession">
+                CO-FUNDER
+              </p>
+              <p class="slider__text text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus
+                vitae, nullam
+                lobortis enim.
+              </p>
+            </div>
+
+            <div class="slider__item">
+              <img class="slider__img" src="img/slider__img.jpg" alt="аватарка">
+              <h3 class="slider__name">
+                Ann Lubin
+              </h3>
+              <p class="slider__profession">
+                CO-FUNDER
+              </p>
+              <p class="slider__text text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus
+                vitae, nullam
+                lobortis enim.
+              </p>
+            </div>
+          </div>
+
+          <div class="slider__controls">
+            <button class="slider__button slider__button_active">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" fill="white" />
+                <circle cx="10" cy="10" r="9.75" stroke="white" stroke-width="0.5" />
+              </svg>
+
+            </button>
+            <button class="slider__button">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" fill="white" />
+                <circle cx="10" cy="10" r="9.75" stroke="white" stroke-width="0.5" />
+              </svg>
+
+            </button>
+            <button class="slider__button">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" fill="white" />
+                <circle cx="10" cy="10" r="9.75" stroke="white" stroke-width="0.5" />
+              </svg>
+            </button>
+            <button class="slider__button">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" fill="white" />
+                <circle cx="10" cy="10" r="9.75" stroke="white" stroke-width="0.5" />
+              </svg>
+            </button>
+            <button class="slider__button">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" fill="white" />
+                <circle cx="10" cy="10" r="9.75" stroke="white" stroke-width="0.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section class="main__blog blog" id="blog">
+
+      <div class="blog__wrapper">
+        <h2 class="blog__title">Our recent blog</h2>
+        <p class="blog__text">
+          Lorem ipsum dolor
+          sit amet, consectetur
+          adipiscing elit.
+          Viverra nunc ante
+          velit vitae.
+        </p>
+        <ul class="blog__articles articles">
+          <li class="articles__item">
+
+            <img class="articles__img" src="img/blog__snapchat.jpg" alt="снэпчат">
+            <h3 class="articles__title">
+              The Snap Pixel: How It Works and How to Install
+            </h3>
+            <p class="articles__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae,
+              nullam
+              lobortis enim.
+            </p>
+            <a href="#" class="articles__link">
+              Read more
+            </a>
+
+          </li>
+
+          <li class="articles__item">
+
+            <img class="articles__img" src="img/blog__instagram.jpg" alt="инстаграмм">
+            <h3 class="articles__title">
+              Global Partner Solutions: A Partnership of Innova
+            </h3>
+            <p class="articles__text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae,
+              nullam
+              lobortis enim.
+            </p>
+            <a href="#" class="articles__link">
+              Read more
+            </a>
+
+          </li>
+
+          <li class="articles__item">
+
+            <img class="articles__img" src="img/blog__you-can.jpg" alt="ты можешь">
+            <h3 class="articles__title">
+              2021: An opportunity for Snapchatters to start fre
+            </h3>
+            <p class="articles__text text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae,
+              nullam
+              lobortis enim.
+            </p>
+            <a href="#" class="articles__link">
+              Read more
+            </a>
+
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="main__contacts contacts" id="contacts">
+      <h2 class="visually-hidden">Our contacts</h2>
+
+      <a href="mailto:info.design@gmail.com" class="contacts__link">
+        <img class="contacts__img" src="img/contacts__email.svg" alt="значок gmail">
+        <span class="contacts__text">info.design@gmail.com</span>
+      </a>
+
+
+
+      <a href="tel:+8803216559985" class="contacts__link">
+        <img class="contacts__img" src="img/contacts__call.svg" alt="значок gmail">
+        <span class="contacts__text">+880 321 655 9985</span>
+      </a>
+
+
+    </section>
+  </main>
+  <footer class="footer">
+
+    <div class="footer__wrapper">
+
+      <div class="footer__social social">
+        <h3 class="social__title">Logo</h3>
+        <p class="social__text">
+          Lorem ipsum dolor
+          sit amet, consectetur
+          adipiscing elit. Viverra
+          nunc ante velit vitae.
+          Est tellus vitae,
+          nullam
+          lobortis enim.
+        </p>
+        <ul class="social__list">
+          <li class="social__item">
+            <a href="#" class="social__link">
+              <img src="img/social__facebook.svg" alt="facebook">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="#" class="social__link">
+              <img src="img/social__instagram.svg" alt="instagram">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="#" class="social__link">
+              <img src="img/social__twitter.svg" alt="twitter">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="#" class="social__link">
+              <img src="img/social__youtube.svg" alt="youtube">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer__links links">
+        <h3 class="links__title title">
+          quick link
+        </h3>
+        <ul class="links__list">
+          <li class="links__item"><a href="demo.html" class="links__link">Demo</a></li>
+          <li class="links__item"><a href="form.html" class="links__link">Form</a></li>
+          <li class="links__item"><a href="grid.html" class="links__link">Grid</a></li>
+          <li class="links__item"><a href="#" class="links__link">articles</a></li>
+        </ul>
+      </div>
+      <div class="footer__news news">
+        <h3 class="news__title">
+          news letter
+        </h3>
+        <p class="news__text">
+          Subscribe our newsnews to get our latest
+          update & news
+        </p>
+        <form action="#" method="post" class="news__form">
+          <label class="news__label">
+            <p class="visually-hidden">email</p>
+            <input class="news__input-text" type="email" name="mail" value="" placeholder="Your email address">
+          </label>
+          <button class="news__button" type="submit">
+            <img src="img/form__button.svg" alt="бумажный самолётик">
+            <span class="visually-hidden">Subscribe</span>
+          </button>
+        </form>
+      </div>
+      <div class="copyright">
+        <img class="copyright__img" src="img/copyright__img.svg" alt="copyright logo">
+        <p class="copyright__text">Copyright 2021 .Ojjomedia. All Right Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
