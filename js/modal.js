@@ -1,146 +1,219 @@
-/* eslint-disable no-console */
-// Лабораторная №4: модальное окно регистрации + валидация через Constraint Validation API.
+document.addEventListener("DOMContentLoaded", function () {
+  const registrationForm = document.querySelector(".registration");
+  const passwordInput = document.getElementById("password");
+  const showPasswordBtn = document.querySelector(".password__toggle");
 
-;(function () {
-	'use strict'
+  // Добавляем обработчики blur для всех полей ввода
+  const inputs = registrationForm.querySelectorAll("input, select");
+  inputs.forEach((input) => {
+    input.addEventListener("blur", validateField);
+  });
 
-	// Элементы
-	const openBtn = document.getElementById('open-register')
-	const modal = document.getElementById('register-modal')
-	const closeBtn = document.getElementById('close-modal')
+  // Обработчик показа/скрытия пароля
+  if (showPasswordBtn && passwordInput) {
+    showPasswordBtn.addEventListener("pointerdown", function () {
+      passwordInput.type = "text";
+    });
 
-	const form = document.getElementById('register-form')
-	const nameInput = document.getElementById('reg-name')
-	const emailInput = document.getElementById('reg-email')
-	const passInput = document.getElementById('reg-pass')
-	const showPassBtn = document.getElementById('show-pass')
+    showPasswordBtn.addEventListener("pointerup", function () {
+      passwordInput.type = "password";
+    });
 
-	// Утилита: показать/скрыть ошибку у поля
-	function setFieldError(input, message) {
-		const errId = input.getAttribute('aria-describedby')
-		if (!errId) return
+    showPasswordBtn.addEventListener("pointerleave", function () {
+      passwordInput.type = "password";
+    });
+  }
 
-		const errEl = document.getElementById(errId)
-		if (!errEl) return
+  // Обработчик отправки формы
+  registrationForm.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-		if (message) {
-			input.setAttribute('aria-invalid', 'true')
-			errEl.textContent = message
-			errEl.hidden = false
-		} else {
-			input.removeAttribute('aria-invalid')
-			errEl.textContent = ''
-			errEl.hidden = true
-		}
-	}
+    // Валидируем все поля перед отправкой
+    let isValid = true;
+    let firstInvalidField = null;
 
-	// Текст ошибки по validity
-	function getMessage(input) {
-		const v = input.validity
-		if (v.valid) return ''
+    inputs.forEach((input) => {
+      const fieldValid = validateField({ target: input });
+      if (!fieldValid && !firstInvalidField) {
+        firstInvalidField = input;
+        isValid = false;
+      }
+    });
 
-		if (v.valueMissing) return 'Поле обязательно для заполнения.'
-		if (v.typeMismatch && input.type === 'email')
-			return 'Введите корректный email.'
-		if (v.tooShort)
-			return `Минимальная длина: ${input.getAttribute('minlength')} символов.`
-		if (v.tooLong)
-			return `Максимальная длина: ${input.getAttribute('maxlength')} символов.`
-		if (v.rangeUnderflow)
-			return `Значение должно быть не меньше ${input.getAttribute('min')}.`
-		if (v.rangeOverflow)
-			return `Значение должно быть не больше ${input.getAttribute('max')}.`
-		if (v.patternMismatch)
-			return 'Значение не соответствует требуемому шаблону.'
-		return 'Проверьте корректность поля.'
-	}
+    if (isValid) {
+      // Собираем данные формы
+      const formData = new FormData(registrationForm);
+      console.log("Form Data:");
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
 
-	// Валидация поля по blur
-	function validateOnBlur(e) {
-		const input = e.target
-		if (!(input instanceof HTMLInputElement)) return
+      alert(
+        "Форма успешно отправлена! Проверьте консоль для просмотра данных."
+      );
+      // Здесь можно добавить отправку на сервер
+      // registrationForm.submit();
+    } else {
+      firstInvalidField.focus();
+    }
+  });
 
-		const msg = getMessage(input)
-		setFieldError(input, msg)
-	}
+  // Обработчик сброса формы
+  registrationForm.addEventListener("reset", function () {
+    // Сбрасываем все сообщения об ошибках
+    const errorMessages = registrationForm.querySelectorAll(".error-message");
+    errorMessages.forEach((error) => {
+      error.hidden = true;
+      error.textContent = "";
+    });
 
-	// Навешиваем blur на все контролы формы
-	;[nameInput, emailInput, passInput].forEach(el => {
-		el.addEventListener('blur', validateOnBlur)
-	})
+    // Сбрасываем aria-invalid атрибуты
+    inputs.forEach((input) => {
+      input.setAttribute("aria-invalid", "false");
+    });
+  });
 
-	// Submit формы
-	form.addEventListener('submit', e => {
-		e.preventDefault() // предотвращаем перезагрузку страницы
+  // Функция валидации отдельного поля
+  function validateField(event) {
+    const input = event.target;
+    const errorElement = document.getElementById(`${input.name}-error`);
 
-		const controls = [nameInput, emailInput, passInput]
-		let firstInvalid = null
+    if (input.type === "radio") {
+      return validateRadioGroup(input.name);
+    }
 
-		controls.forEach(input => {
-			const msg = getMessage(input)
-			setFieldError(input, msg)
-			if (!firstInvalid && msg) firstInvalid = input
-		})
+    const isValid = validateInput(input);
 
-		if (firstInvalid) {
-			firstInvalid.focus() // фокус на первое неверное поле
-			return
-		}
+    if (!isValid) {
+      input.setAttribute("aria-invalid", "true");
+      if (errorElement) {
+        errorElement.textContent = getErrorMessage(input);
+        errorElement.hidden = false;
+      }
+    } else {
+      input.setAttribute("aria-invalid", "false");
+      if (errorElement) {
+        errorElement.hidden = true;
+        errorElement.textContent = "";
+      }
+    }
 
-		// Все корректно — собираем FormData и выводим в консоль
-		const data = new FormData(form)
-		const result = Object.fromEntries(data.entries())
-		console.log('FormData:', result)
+    return isValid;
+  }
 
-		// Закрываем модалку
-		modal.close()
-	})
+  // Функция валидации группы radio кнопок
+  function validateRadioGroup(name) {
+    const radioGroup = document.querySelectorAll(`input[name="${name}"]`);
+    const isChecked = Array.from(radioGroup).some((radio) => radio.checked);
+    const errorElement = document.getElementById(`${name}-error`);
 
-	// Открыть модалку
-	openBtn?.addEventListener('click', () => {
-		modal.showModal() // задание требует showModal()
-	})
+    if (!isChecked) {
+      radioGroup.forEach((radio) => {
+        radio.setAttribute("aria-invalid", "true");
+      });
+      if (errorElement) {
+        errorElement.textContent = "Пожалуйста, выберите пол";
+        errorElement.hidden = false;
+      }
+      return false;
+    } else {
+      radioGroup.forEach((radio) => {
+        radio.setAttribute("aria-invalid", "false");
+      });
+      if (errorElement) {
+        errorElement.hidden = true;
+        errorElement.textContent = "";
+      }
+      return true;
+    }
+  }
 
-	// Закрыть модалку по кнопке
-	closeBtn?.addEventListener('click', () => {
-		modal.close()
-	})
+  // Функция проверки валидности input
+  function validateInput(input) {
+    // Проверка обязательных полей
+    if (input.hasAttribute("required") && !input.value.trim()) {
+      return false;
+    }
 
-	// Закрытие по клику на бэкдроп (вне контента)
-	modal.addEventListener('click', e => {
-		if (e.target === modal) {
-			modal.close()
-		}
-	})
+    // Специфические проверки для разных типов полей
+    switch (input.type) {
+      case "email":
+        return isValidEmail(input.value);
+      case "tel":
+        return isValidPhone(input.value);
+      case "password":
+        return input.value.length >= 6;
+      case "text":
+        if (input.name === "name") {
+          return input.value.trim().length > 0;
+        }
+        break;
+      case "date":
+        return input.value !== "";
+    }
 
-	// Не даём клику внутри формы всплыть до <dialog>, чтобы не закрывать окно
-	form.addEventListener('click', e => {
-		e.stopPropagation() // демонстрация stopPropagation()
-	})
+    // Для select проверяем, что выбрана опция (не пустая)
+    if (input.tagName === "SELECT" && input.hasAttribute("required")) {
+      return input.value !== "";
+    }
 
-	// Показ пароля по удержанию: pointerdown/pointerup
-	function revealPassword() {
-		passInput.type = 'text'
-	}
-	function hidePassword() {
-		passInput.type = 'password'
-	}
+    return input.validity.valid;
+  }
 
-	showPassBtn.addEventListener('pointerdown', revealPassword)
-	showPassBtn.addEventListener('pointerup', hidePassword)
-	showPassBtn.addEventListener('pointercancel', hidePassword)
-	showPassBtn.addEventListener('pointerleave', hidePassword)
+  // Функция получения сообщения об ошибке
+  function getErrorMessage(input) {
+    if (input.validity.valueMissing) {
+      return "Это поле обязательно для заполнения";
+    }
 
-	// Демонстрация фаз событий: capturing и bubbling
-	document.addEventListener(
-		'click',
-		() => {
-			// console.log('document CAPTURE click');
-		},
-		true // фаза погружения
-	)
+    if (input.validity.typeMismatch) {
+      if (input.type === "email") {
+        return "Введите корректный email адрес";
+      }
+      if (input.type === "tel") {
+        return "Введите корректный номер телефона";
+      }
+    }
 
-	document.addEventListener('click', () => {
-		// console.log('document BUBBLE click');
-	})
-})()
+    if (input.validity.tooShort) {
+      return `Минимальная длина: ${input.minLength} символов`;
+    }
+
+    // Кастомные сообщения для разных полей
+    switch (input.name) {
+      case "password":
+        if (input.value.length < 6) {
+          return "Пароль должен содержать минимум 6 символов";
+        }
+        break;
+      case "name":
+        if (!input.value.trim()) {
+          return "Имя обязательно для заполнения";
+        }
+        break;
+      case "date":
+        if (!input.value) {
+          return "Дата рождения обязательна для заполнения";
+        }
+        break;
+      case "time":
+        if (!input.value) {
+          return "Пожалуйста, выберите время";
+        }
+        break;
+    }
+
+    return "Неверное значение";
+  }
+
+  // Вспомогательные функции валидации
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  function isValidPhone(phone) {
+    const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+    return phoneRegex.test(phone) && phone.replace(/\D/g, "").length >= 10;
+  }
+});
